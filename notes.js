@@ -35,6 +35,30 @@ const loadNotes = () => {
     }
 };
 
+const readNote = (title) => {
+        const notes = loadNotes();
+        const noteToRead = notes.find((note) => note.title === title)
+    
+        if(noteToRead){
+            console.log(noteToRead.title)
+            console.log(noteToRead.body)
+        } else{
+            console.log(chalk.red.inverse('Note not found !'))
+        }
+    }
+          
+
+const removeNote = (title) => {
+        const notes = loadNotes();
+        const notesToKeep = notes.filter((note) => note.title !== title);
+        if(notesToKeep.length !== notes.length){
+            console.log(chalk.green.inverse('Note Removed'));
+            saveNotes(notesToKeep);
+        } else {
+            console.log(chalk.red.inverse('Note title taken !'));
+        }
+    }
+
 const listNotes = () => {
         const notes = loadNotes()
     
@@ -47,5 +71,7 @@ const listNotes = () => {
 
 module.exports = {
     addNote: addNote,
-    listNotes: listNotes
+    readNote: readNote,
+    removeNote:removeNote,
+    listNotes:listNote,
 };

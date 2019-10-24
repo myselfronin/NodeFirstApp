@@ -25,6 +25,38 @@ yargs.command({
     }
 });
 
+//Create read Command
+yargs.command({
+        command: 'read',
+        description: 'Read a note',
+        builder: {
+          title: {
+                describe: 'Note title',
+                demandOption: true,
+                type: 'string'
+            }
+        },
+        handler(argv){
+            notes.readNote(argv.title)
+        }
+    });
+
+//Create Remove Command
+yargs.command({
+        command: 'remove',
+        description: 'Remove a note',
+        builder:{
+            title: {
+                describe: 'Note title',
+                demandOption: true,
+                type: 'string'
+            }
+        },
+        handler(argv){
+            notes.removeNote(argv.title)
+        }
+    });
+//Create List Command
 yargs.command({
         command: 'list',
         description: 'List all notes',
@@ -33,5 +65,4 @@ yargs.command({
         }
     })
     
-
 yargs.parse()
