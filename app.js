@@ -56,4 +56,13 @@ yargs.command({
             notes.removeNote(argv.title)
         }
     });
+//Create List Command
+yargs.command({
+        command: 'list',
+        description: 'List all notes',
+        handler(argv){
+            notes.listNotes()
+        }
+    })
+    
 yargs.parse()
