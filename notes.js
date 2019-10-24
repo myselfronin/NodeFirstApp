@@ -35,6 +35,19 @@ const loadNotes = () => {
     }
 };
 
+const readNote = (title) => {
+        const notes = loadNotes();
+        const noteToRead = notes.find((note) => note.title === title)
+    
+        if(noteToRead){
+            console.log(noteToRead.title)
+            console.log(noteToRead.body)
+        } else{
+            console.log(chalk.red.inverse('Note not found !'))
+        }
+    }
+          
+
 const removeNote = (title) => {
         const notes = loadNotes();
         const notesToKeep = notes.filter((note) => note.title !== title);
@@ -48,5 +61,6 @@ const removeNote = (title) => {
 
 module.exports = {
     addNote: addNote,
+    readNote: readNote,
     removeNote:removeNote,
 };
