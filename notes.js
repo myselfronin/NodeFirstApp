@@ -35,6 +35,18 @@ const loadNotes = () => {
     }
 };
 
+const removeNote = (title) => {
+        const notes = loadNotes();
+        const notesToKeep = notes.filter((note) => note.title !== title);
+        if(notesToKeep.length !== notes.length){
+            console.log(chalk.green.inverse('Note Removed'));
+            saveNotes(notesToKeep);
+        } else {
+            console.log(chalk.red.inverse('Note title taken !'));
+        }
+    }
+
 module.exports = {
     addNote: addNote,
+    removeNote:removeNote,
 };
